@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Три випадкові числа</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .result-container {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .result-box {
+      padding: 20px;
+      width: 150px;
+      background-color: #ecf0f1;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2d3436;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>Три випадкові числа від 1 до 5 (не включаючи 5)</h2>
+  <button onclick="showThreeRandoms()">Згенерувати</button>
+
+  <div class="result-container">
+    <div class="result-box" id="random1"></div>
+    <div class="result-box" id="random2"></div>
+    <div class="result-box" id="random3"></div>
+  </div>
+
+  <script>
+    function random(min, max) {
+      return (Math.random() * (max - min) + min).toFixed(2); // округлюємо до двох знаків після коми
+    }
+
+    function showThreeRandoms() {
+      document.getElementById("random1").textContent = random(1, 5);
+      document.getElementById("random2").textContent = random(1, 5);
+      document.getElementById("random3").textContent = random(1, 5);
+    }
+  </script>
+</body>
+</html>

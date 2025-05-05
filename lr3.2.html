@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Перевірка простого числа</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f9fd;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    input, button {
+      padding: 12px 20px;
+      font-size: 16px;
+      margin: 10px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      width: 300px;
+    }
+
+    input:focus, button:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+
+    button {
+      background-color: #27ae60;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2ecc71;
+    }
+
+    p {
+      font-size: 18px;
+      color: #34495e;
+      margin-top: 20px;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #2ecc71;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .error {
+      background-color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Перевірка простого числа</h1>
+  <input type="number" id="numberInput" placeholder="Введіть число">
+  <button onclick="checkPrime()">Перевірити</button>
+
+  <div id="result" class="result"></div>
+
+  <script>
+    function isPrime(n) {
+      if (n <= 1) return false;
+      if (n === 2) return true;
+      if (n % 2 === 0) return false;
+
+      for (let i = 3; i <= Math.sqrt(n); i += 2) {
+        if (n % i === 0) return false;
+      }
+
+      return true;
+    }
+
+    function checkPrime() {
+      const num = parseInt(document.getElementById("numberInput").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(num)) {
+        result.textContent = "Будь ласка, введіть ціле число.";
+        result.classList.add("error");
+        return;
+      }
+
+      if (isPrime(num)) {
+        result.textContent = `${num} — просте число.`;
+        result.classList.remove("error");
+      } else {
+        result.textContent = `${num} — не є простим числом.`;
+        result.classList.remove("error");
+      }
+    }
+  </script>
+</body>
+</html>

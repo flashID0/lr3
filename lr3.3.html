@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Рекурсивна сума</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f4f8;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 12px 20px;
+      font-size: 16px;
+      margin: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      width: 250px;
+    }
+
+    input:focus, button:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    p {
+      font-size: 18px;
+      color: #34495e;
+      margin-top: 20px;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #2ecc71;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: inline-block;
+      width: 300px;
+    }
+
+    .error {
+      background-color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Обчислення суми від 1 або -1 до введеного числа</h1>
+  <input type="number" id="numberInput" placeholder="Введіть число">
+  <button onclick="calculateSum()">Обчислити суму</button>
+
+  <div id="result" class="result"></div>
+
+  <script>
+    function recursiveSum(n) {
+      if (n === 0) return 0;
+      if (n > 0) return n + recursiveSum(n - 1);
+      return n + recursiveSum(n + 1);
+    }
+
+    function calculateSum() {
+      const input = document.getElementById("numberInput").value;
+      const num = parseInt(input);
+      const result = document.getElementById("result");
+
+      if (isNaN(num)) {
+        result.textContent = "Будь ласка, введіть ціле число.";
+        result.classList.add("error");
+        return;
+      }
+
+      const sum = recursiveSum(num);
+      result.textContent = `Сума дорівнює ${sum}`;
+      result.classList.remove("error");
+    }
+  </script>
+</body>
+</html>
